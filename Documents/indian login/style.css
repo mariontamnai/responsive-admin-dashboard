@@ -16,16 +16,18 @@ body {
 
 .container {
     display: flex;
-    /* background-color: #1B1B1B; */
-    border-radius: 15px;
+    flex-direction: row;
+    background-color: #1B1B1B;
+    border-radius: 11px;
     overflow: hidden;
     width: 90%;
-    /* max-width: 1000px; */
+    max-width: 1000px;
+    height: auto;
 }
 
 
 .login-section {
-    padding: 40px;
+    padding: 30px;
     width: 50%;
     background: linear-gradient(135deg, #0F2F2F, #1B1B1B);
     display: flex;
@@ -88,7 +90,7 @@ form input {
 .social-icons i {
     font-size: 1.5em;
     cursor: pointer;
-    color: #B0B0B0;
+    color: inherit;
 }
 
 .create-account {
@@ -100,8 +102,17 @@ form input {
 
 /* Testimonial Section */
 .testimonial-section {
+    position: relative;
     padding: 40px;
-    width: 50%;
+    border-radius: 10px;
+    border: 2px solid #333;
+    transition: border 0.3s ease;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    width: 60%;
+    min-height: 400px;
     background-color: #4A937A;
     display: flex;
     flex-direction: column;
@@ -109,9 +120,13 @@ form input {
     color: #FFFFFF;
 }
 
+.testimonial-section:hover {
+    border: 2px solid #00ffa667;
+}
+
 .testimonial-section h2 {
-    font-size: 1.8em;
-    margin-bottom: 15px;
+    font-size: 1.9em;
+    margin-top: 1;
 }
 
 blockquote {
@@ -132,14 +147,14 @@ blockquote {
 
 .navigation-buttons {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 14px;
+    margin-bottom: 10px;
 }
 
 .nav-button {
     border: none;
     padding: 10px;
-    border-radius: 50%;
+    border-radius: 10%;
     background-color: #2FC18C;
     color: #FFFFFF;
     cursor: pointer;
@@ -151,10 +166,12 @@ blockquote {
     color: #1B1B1B;
     padding: 20px;
     border-radius: 10px;
-    margin-top: 20px;
+    margin-top: 80px;
+    position: relative;
+    z-index: 1;
 }
 
 .promotion h3 {
-    font-size: 1.2em;
+    font-size: 24px;
     margin-bottom: 10px;
 }
