@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+
 }
 
 body {
@@ -16,23 +17,28 @@ body {
 
 .container {
     display: flex;
-    flex-direction: row;
     background-color: #1B1B1B;
     border-radius: 11px;
     overflow: hidden;
     width: 90%;
     max-width: 1000px;
-    height: auto;
 }
 
 
 .login-section {
-    padding: 30px;
-    width: 50%;
+    flex: 1;
+    padding: 40px;
+    width: 100%;
+    height: 90%;
     background: linear-gradient(135deg, #0F2F2F, #1B1B1B);
+    border: 2px solid #1B1B1B;
+    border-radius: 15px 0 0 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 rgba(74, 147, 122, 0);
+    transition: box-shadow 0.3s ease;
 }
 
 .login-section h1 {
@@ -41,8 +47,11 @@ body {
 }
 
 .login-section p {
-    color: #B0B0B0;
     margin-bottom: 20px;
+}
+
+.login-section:hover {
+    box-shadow: inset 0 0 20px rgba(74, 147, 122, 0.6);
 }
 
 form {
@@ -50,17 +59,42 @@ form {
     flex-direction: column;
 }
 
+form:focus-within {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
 form label {
-    margin: 10px 0 5px;
+    display: block;
+    margin-bottom: 9px;
+    font-weight: 500;
+
 }
 
 form input {
+    width: 100%;
     padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: none;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     font-size: 1em;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+form input:focus {
+    border-color: #4A937A;
+    box-shadow: 0 0 5px rgba(74, 147, 122, 0.3);
+    outline: none;
+}
+
+form input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
 
 .forgot-password {
     color: #B0B0B0;
@@ -70,21 +104,41 @@ form input {
 }
 
 .sign-in-button {
-    padding: 15px;
+    padding: 12px;
     border: none;
-    border-radius: 8px;
-    background-color: #2FC18C;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #4A937A, #6DC1A9);
     color: white;
     font-size: 1.1em;
+    font-weight: bold;
     cursor: pointer;
-    margin-bottom: 20px;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
+
+.sign-in-button:hover {
+    background: linear-gradient(45deg, #6DC1A9, #4A937A);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none;
+}
+
+
 
 .social-icons {
     display: flex;
     justify-content: center;
     gap: 15px;
     margin-top: 20px;
+    color: inherit;
 }
 
 .social-icons i {
@@ -92,6 +146,7 @@ form input {
     cursor: pointer;
     color: inherit;
 }
+
 
 .create-account {
     color: #B0B0B0;
@@ -102,31 +157,49 @@ form input {
 
 /* Testimonial Section */
 .testimonial-section {
+    flex: 1;
     position: relative;
-    padding: 40px;
-    border-radius: 10px;
-    border: 2px solid #333;
-    transition: border 0.3s ease;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    width: 60%;
-    min-height: 400px;
+    padding: 30px;
     background-color: #4A937A;
+    color: #FFFFFF;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: #FFFFFF;
+    align-items: flex-start;
+    border-radius: 10px;
+    border-top-right-radius: 50px;
+    box-shadow: -5px 0px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden
 }
+
+.testimonial-section::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 50px;
+    height: 50px;
+    background-color: #1B1B1B;
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+    z-index: 1;
+}
+
+.testimonial-section .content {
+    position: relative;
+    z-index: 2;
+}
+
 
 .testimonial-section:hover {
     border: 2px solid #00ffa667;
 }
 
-.testimonial-section h2 {
-    font-size: 1.9em;
-    margin-top: 1;
+.testimonial-section h2,
+p {
+    font-size: 1.em;
+    margin: 10;
+    padding: 0;
 }
 
 blockquote {
@@ -139,39 +212,50 @@ blockquote {
     margin-bottom: 20px;
 }
 
-.author span {
+.author br {
     display: block;
     font-weight: normal;
     color: #B0B0B0;
 }
 
-.navigation-buttons {
+.button-container {
     display: flex;
-    gap: 14px;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.button-container i {
+    width: 40px;
+    height: 40px;
+    color: #FFFFFF;
+    background-color: #333;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.i .fas fa-arrow-left{
+    background-color: #4A937A;
+}
+
+.info-box {
+    margin-top: 500px;
+    padding: 30px;
+    background-color: #FFFFFF;
+    color: #333;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.info-tittle {
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-.nav-button {
-    border: none;
-    padding: 10px;
-    border-radius: 10%;
-    background-color: #2FC18C;
-    color: #FFFFFF;
-    cursor: pointer;
-    font-size: 1.1em;
-}
-
-.promotion {
-    background-color: #FFFFFF;
-    color: #1B1B1B;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 80px;
-    position: relative;
-    z-index: 1;
-}
-
-.promotion h3 {
-    font-size: 24px;
+.info-description {
+    font-size: 0.9em;
     margin-bottom: 10px;
 }
